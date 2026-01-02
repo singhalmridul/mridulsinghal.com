@@ -150,7 +150,7 @@
     outline: none;
     cursor: pointer;
     min-width: 110px;
-    height: 52.5px;
+    height: 100%;
     line-height: 1;
     transition: all 0.3s;
 }

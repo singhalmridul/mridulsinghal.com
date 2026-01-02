@@ -27,7 +27,7 @@ rsync -avz --delete \
   public \
   package.json \
   package-lock.json \
-  next.config.mjs \
+  next.config.ts \
   $USER@$HOST:$REMOTE_DIR
 
 # 3. Remote Install & Restart
