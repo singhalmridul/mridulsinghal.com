@@ -13,6 +13,7 @@
 .title span {
     background: linear-gradient(to right, #fff, var(--secondary));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -134,6 +135,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding-top: 1rem;
 }
