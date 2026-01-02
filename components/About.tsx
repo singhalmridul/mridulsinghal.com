@@ -46,7 +46,7 @@ export default function About() {
                                 {'  '}skills: [<span className={styles.string}>"React"</span>, <span className={styles.string}>"Next.js"</span>, <span className={styles.string}>"Splunk"</span>],{'\n'}
                                 {'  '}databases: [<span className={styles.string}>"MongoDB"</span>, <span className={styles.string}>"PostgreSQL"</span>],{'\n'}
                                 {'  '}certifications: [<span className={styles.string}>"ITIL 4"</span>, <span className={styles.string}>"MongoDB Pro"</span>],{'\n'}
-                                {'  '}hobbies: <span className={styles.string}>"Cricket & Tech Exploration"</span>{'\n'}
+                                {'  '}hobbies: <span className={styles.string}>"Badminton & Tech Exploration"</span>{'\n'}
                                 {'}'};
                             </code>
                         </pre>
