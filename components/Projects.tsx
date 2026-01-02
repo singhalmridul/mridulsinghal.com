@@ -45,6 +45,12 @@ export default function Projects() {
                     // Filter out forks and profile repo, sort by stars
                     const featured = data
                         .filter(repo => !repo.fork && repo.name !== 'singhalmridul')
+                        .map(repo => {
+                            if (repo.name === 'mridulsinghal.com') {
+                                return { ...repo, homepage: 'https://mridulsinghal.com' }
+                            }
+                            return repo
+                        })
                         .sort((a, b) => b.stargazers_count - a.stargazers_count)
                         .slice(0, 6) // Top 6 Projects
                     setRepos(featured)

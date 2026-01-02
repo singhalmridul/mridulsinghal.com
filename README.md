@@ -12,6 +12,10 @@
   </p>
 </div>
 
+<br />
+
+[![Portfolio Preview](public/preview.png)](https://mridulsinghal.com)
+
 ---
 
 ## 🚀 Overview
