@@ -1,0 +1,79 @@
+.navbar {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    pointer-events: auto;
+}
+
+.navContainer {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    padding: 0.75rem 1rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.navLink {
+    position: relative;
+    color: #aaa;
+    text-decoration: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navLink:hover {
+    color: #fff;
+}
+
+.active {
+    color: #fff;
+}
+
+.activeTab {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    z-index: -1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary);
+    transform-origin: 0%;
+    z-index: 200;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        bottom: 2rem;
+        top: auto;
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .navContainer {
+        justify-content: space-between;
+        padding: 0.5rem;
+        gap: 0.2rem;
+    }
+
+    .navLink {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}

@@ -1,0 +1,262 @@
+.form {
+    max-width: 600px;
+    margin: 0 auto 4rem;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    text-align: left;
+}
+
+.inputGroup {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.textarea {
+    resize: vertical;
+}
+
+.input:focus,
+.textarea:focus {
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: #888;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+/* Floating Label Logic */
+.input:focus~.label,
+.input:not(:placeholder-shown)~.label,
+.textarea:focus~.label,
+.textarea:not(:placeholder-shown)~.label {
+    top: -0.75rem;
+    left: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--primary);
+    background: #000;
+    /* Match bg to hide line */
+    padding: 0 0.5rem;
+}
+
+.submitBtn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: opacity 0.3s;
+}
+
+.submitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.successMessage {
+    text-align: center;
+    background: rgba(39, 201, 63, 0.1);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid rgba(39, 201, 63, 0.3);
+    max-width: 500px;
+    margin: 0 auto 4rem;
+}
+
+.checkIcon {
+    font-size: 3rem;
+    color: #27c93f;
+    margin-bottom: 1rem;
+}
+
+.successMessage h3 {
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.resetBtn {
+    margin-top: 1.5rem;
+    background: none;
+    border: 1px solid #444;
+    color: #ccc;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+/* New Styles for Phone Group */
+.phoneGroup {
+    display: flex;
+    gap: 0.5rem;
+    /* Reduced gap for better fit */
+    align-items: stretch;
+    flex-wrap: nowrap;
+    /* Force single line */
+}
+
+/* Custom Country Selector */
+.countrySelectorWrapper {
+    position: relative;
+    z-index: 10;
+    flex: 0 0 auto;
+    /* Don't shrink or grow */
+    width: 30%;
+    /* Fixed width proportion */
+    max-width: 140px;
+    min-width: 120px;
+}
+
+
+.countryTrigger {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    min-width: 110px;
+    height: 100%;
+    transition: all 0.3s;
+}
+
+.countryTrigger:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.flag {
+    font-size: 1.2rem;
+}
+
+.chevron {
+    font-size: 0.7rem;
+    color: #888;
+    margin-left: auto;
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 300px;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Search Box */
+.searchWrapper {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #111;
+}
+
+.searchIcon {
+    color: #666;
+    margin-right: 0.5rem;
+}
+
+.searchInput {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 100%;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+/* List */
+.countryList {
+    max-height: 250px;
+    overflow-y: auto;
+    padding: 0.5rem 0;
+}
+
+.countryList::-webkit-scrollbar {
+    width: 6px;
+}
+
+.countryList::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+.countryOption {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.countryOption:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.countryName {
+    flex: 1;
+    font-size: 0.9rem;
+    color: #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.codeLight {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.noResult {
+    padding: 1rem;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.phoneInputWrapper {
+    flex: 1;
+    position: relative;
+    width: 100%;
+}

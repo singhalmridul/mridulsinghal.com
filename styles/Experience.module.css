@@ -1,0 +1,183 @@
+.experience {
+    padding: 8rem 2rem;
+    background-color: #050505;
+    position: relative;
+    overflow: hidden;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 5rem;
+    font-size: 3rem;
+    background: linear-gradient(to right, #fff, #888);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.maxWidth {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Glowing Neon Center Line */
+.timelineLine {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--primary), var(--secondary), transparent);
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px var(--primary);
+    opacity: 0.5;
+}
+
+.timelineItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6rem;
+    position: relative;
+}
+
+.timelineItem:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Timeline Dot */
+.dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1rem;
+    height: 1rem;
+    background: #000;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.card {
+    width: 45%;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.15);
+    /* Light blue glow */
+}
+
+/* Date Bubble (opposite side) */
+.dateBubble {
+    position: absolute;
+    left: 50%;
+    /* Default center, adjusted via inline style or logic */
+    transform: translateX(-50%);
+    background: #111;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: 1px solid #333;
+    font-size: 0.85rem;
+    color: #888;
+    z-index: 2;
+    top: -2.5rem;
+    /* Above the dot */
+}
+
+.role {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.company {
+    color: var(--primary);
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.list {
+    list-style: none;
+    color: #ccc;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.list li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+}
+
+/* Skills/Tech Tags */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skillTag {
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    color: #aaa;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timelineLine {
+        left: 20px;
+    }
+
+    .timelineItem {
+        flex-direction: column !important;
+        align-items: flex-start;
+        padding-left: 3rem;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .dot {
+        left: 20px;
+    }
+
+    .dateBubble {
+        position: static;
+        transform: none;
+        display: inline-block;
+        margin-bottom: 1rem;
+        background: none;
+        border: none;
+        padding: 0;
+        color: var(--primary);
+    }
+}

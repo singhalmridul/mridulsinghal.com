@@ -77,3 +77,19 @@ To get a local copy up and running, follow these simple steps.
   <p>Made with ❤️ and ☕ by Mridul Singhal</p>
 </div>
 
+   ```
+
+## 📬 Contact
+
+**Mridul Singhal**
+
+- 🌐 [mridulsinghal.com](https://mridulsinghal.com)
+- 💼 [LinkedIn](https://www.linkedin.com/in/mridulsinghal/)
+- 🐙 [GitHub](https://github.com/singhalmridul)
+- 📸 [Instagram](https://www.instagram.com/singhalmridul/)
+
+---
+<div align="center">
+  <p>Made with ❤️ and ☕ by Mridul Singhal</p>
+</div>
+>>>>>>> e09dc0f (feat: Initial release with premium portfolio design)
