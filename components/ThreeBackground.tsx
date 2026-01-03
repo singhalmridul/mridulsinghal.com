@@ -10,22 +10,22 @@ function TechSphere() {
 
     useFrame((state) => {
         if (meshRef.current) {
-            // Rotate the sphere
-            meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.2
-            meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.15
+            // Slower rotation for subtlety
+            meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.08
+            meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.06
         }
     })
 
     return (
         <group>
-            {/* Main Wireframe Sphere */}
+            {/* Main Wireframe Sphere - Subtle */}
             <mesh ref={meshRef} scale={2.5}>
-                <icosahedronGeometry args={[1, 4]} /> {/* High detail for 'tech' grid look */}
+                <icosahedronGeometry args={[1, 4]} />
                 <meshStandardMaterial
-                    color="#00f3ff" // Cyan Tech Color
+                    color="#334155" // Muted slate
                     wireframe
                     transparent
-                    opacity={0.3}
+                    opacity={0.15}
                     side={THREE.DoubleSide}
                 />
             </mesh>
@@ -33,7 +33,7 @@ function TechSphere() {
             {/* Inner Glow Sphere */}
             <mesh scale={2.4}>
                 <icosahedronGeometry args={[1, 1]} />
-                <meshBasicMaterial color="#0044ff" transparent opacity={0.1} wireframe />
+                <meshBasicMaterial color="#1e293b" transparent opacity={0.08} wireframe />
             </mesh>
         </group>
     )
@@ -51,33 +51,23 @@ export default function ThreeBackground() {
             pointerEvents: 'none',
         }}>
             <Canvas camera={{ position: [0, 0, 6] }}>
-                {/* 'Tech' Lighting */}
-                <pointLight position={[10, 10, 10]} color="#00f3ff" intensity={2} />
-                <ambientLight intensity={0.5} color="#ffffff" />
+                {/* Subtle Lighting */}
+                <pointLight position={[10, 10, 10]} color="#475569" intensity={0.5} />
+                <ambientLight intensity={0.3} color="#1e293b" />
 
                 {/* Floating Tech Sphere */}
-                <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
+                <Float speed={1} rotationIntensity={0.3} floatIntensity={0.3}>
                     <TechSphere />
                 </Float>
 
-                {/* Data Particles / Stars */}
+                {/* Very Subtle Particles */}
                 <Sparkles
-                    count={500}
+                    count={150}
                     scale={[10, 10, 10]}
-                    size={2}
-                    speed={0.5}
-                    opacity={0.8}
-                    color="#00f3ff"
-                />
-
-                {/* Secondary Particles */}
-                <Sparkles
-                    count={200}
-                    scale={[15, 15, 15]}
-                    size={5}
-                    speed={0.2}
-                    opacity={0.5}
-                    color="#ffffff"
+                    size={1.5}
+                    speed={0.3}
+                    opacity={0.2}
+                    color="#475569"
                 />
             </Canvas>
         </div>

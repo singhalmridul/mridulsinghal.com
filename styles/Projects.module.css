@@ -11,7 +11,7 @@
 }
 
 .title span {
-    background: linear-gradient(to right, #fff, var(--secondary));
+    background: linear-gradient(to right, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -22,78 +22,86 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 4rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.githubBadge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
-    color: #aaa;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+.subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #94a3b8;
+    max-width: 600px;
+    line-height: 1.6;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(148, 163, 184, 0.2);
     padding: 2rem;
-    border-radius: 16px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 1.5rem;
     height: 100%;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-4px);
+    background: rgba(30, 41, 59, 0.7);
     border-color: var(--primary);
-    box-shadow: 0 15px 40px -10px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 12px 30px rgba(14, 165, 233, 0.2);
 }
 
 .cardHeader {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.folderIcon {
-    font-size: 2.5rem;
+.scope {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.scopeTag {
+    font-size: 0.75rem;
     color: var(--primary);
+    background: rgba(14, 165, 233, 0.1);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(14, 165, 233, 0.3);
 }
 
 .links {
     display: flex;
-    gap: 1rem;
-}
-
-.langIcon {
-    font-size: 2rem;
+    gap: 0.75rem;
 }
 
 .linkIcon {
-    font-size: 1.25rem;
-    color: #aaa;
+    font-size: 1.1rem;
+    color: #94a3b8;
     transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .linkIcon:hover {
@@ -103,72 +111,129 @@
 .projectTitle {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
-    color: #fff;
+    color: #f1f5f9;
+    line-height: 1.3;
+    margin: 0;
 }
 
-.projectDesc {
+.projectTagline {
     font-size: 1rem;
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 2rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+}
+
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(148, 163, 184, 0.15);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.metricValue {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.metricLabel {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .techStack {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: auto;
+    gap: 0.5rem;
 }
 
 .techItem {
-    font-size: 0.75rem;
-    color: #aaa;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: #cbd5e1;
+    background: rgba(100, 116, 139, 0.2);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-family: 'Fira Code', 'JetBrains Mono', monospace;
+    border: 1px solid rgba(100, 116, 139, 0.3);
 }
 
-.projectFooter {
+.caseStudyLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
     margin-top: auto;
-    display: flex;
-    justify-content: space-between;
+    padding-top: 0.5rem;
+}
+
+.caseStudyLink:hover {
+    gap: 0.75rem;
+    color: #60a5fa;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.footerNote {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.footerNote a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
     align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 1rem;
+    gap: 0.25rem;
 }
 
-.stats {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.9rem;
-    color: #888;
+.footerNote a:hover {
+    color: var(--primary);
 }
 
-.stat {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-/* Skeleton */
-.cardSkeleton {
-    height: 300px;
-    background: linear-gradient(90deg, #111 0%, #222 50%, #111 100%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
-    border-radius: 16px;
-}
-
-@keyframes loading {
-    0% {
-        background-position: 100% 0;
+@media (max-width: 768px) {
+    .projects {
+        padding: 6rem 1.5rem;
     }
 
-    100% {
-        background-position: -100% 0;
+    .title {
+        font-size: 2.25rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .metrics {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .scopeTag {
+        font-size: 0.7rem;
     }
 }

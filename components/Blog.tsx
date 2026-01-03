@@ -1,26 +1,30 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import styles from '../styles/Blog.module.css'
 
 const posts = [
     {
-        title: 'Optimizing Next.js for Maximum Performance',
-        excerpt: 'How I achieved a 100/100 Lighthouse score using dynamic imports, image optimization, and smart caching strategies.',
-        date: 'Jan 2, 2026',
-        tag: 'Next.js'
+        title: 'Architecting Observability at Scale',
+        excerpt: 'How I built a Splunk platform processing 50M+ events/day with 93% faster incident detection. Deep dive into data pipelines, alert strategies, and operational tradeoffs.',
+        date: 'Case Study',
+        tag: 'Observability',
+        link: '/projects/splunk-observability'
     },
     {
-        title: 'The Future of AI in Web Development',
-        excerpt: 'Exploring how LLMs and Generative UI are changing the way we build and interact with digital interfaces.',
-        date: 'Dec 15, 2025',
-        tag: 'AI/ML'
+        title: 'Infrastructure Automation: Design Decisions & Tradeoffs',
+        excerpt: 'Building a self-service automation platform that eliminated manual errors and saved 30 hours/week. Exploring idempotency, rollback strategies, and cross-platform challenges.',
+        date: 'Case Study',
+        tag: 'Infrastructure',
+        link: '/projects/automation-scripts'
     },
     {
-        title: 'Building Scalable Backend Systems',
-        excerpt: 'Lessons learned from managing microservices and high-throughput data pipelines using Kafka and Node.js.',
-        date: 'Nov 30, 2025',
-        tag: 'Backend'
+        title: 'Building This Portfolio: A Meta Case Study',
+        excerpt: 'Engineering-first portfolio design using Next.js 16, RSC, and system thinking. Framework decisions, content strategy, and performance optimization for 100/100 Lighthouse score.',
+        date: 'Case Study',
+        tag: 'Full-Stack',
+        link: '/projects/portfolio-website'
     }
 ]
 
@@ -34,25 +38,35 @@ export default function Blog() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    Latest <span>Thoughts</span>
+                    Technical <span>Writing</span>
                 </motion.h2>
+                <motion.p
+                    className={styles.subtitle}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                >
+                    Engineering case studies, architecture deep-dives, and production learnings
+                </motion.p>
 
                 <div className={styles.grid}>
                     {posts.map((post, i) => (
-                        <motion.div
-                            key={i}
-                            className={styles.card}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1 }}
-                            viewport={{ once: true }}
-                            whileHover={{ y: -5 }}
-                        >
-                            <span className={styles.tag}>{post.tag}</span>
-                            <h3 className={styles.postTitle}>{post.title}</h3>
-                            <p className={styles.excerpt}>{post.excerpt}</p>
-                            <span className={styles.date}>{post.date}</span>
-                        </motion.div>
+                        <Link key={i} href={post.link} className={styles.cardLink}>
+                            <motion.div
+                                className={styles.card}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                viewport={{ once: true }}
+                                whileHover={{ y: -5 }}
+                            >
+                                <span className={styles.tag}>{post.tag}</span>
+                                <h3 className={styles.postTitle}>{post.title}</h3>
+                                <p className={styles.excerpt}>{post.excerpt}</p>
+                                <span className={styles.date}>{post.date}</span>
+                            </motion.div>
+                        </Link>
                     ))}
                 </div>
             </div>

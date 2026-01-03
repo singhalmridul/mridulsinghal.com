@@ -84,6 +84,25 @@
     padding: 1.5rem;
     color: #d4d4d4;
     overflow-x: auto;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.codeContent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.codeContent::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+.codeContent::-webkit-scrollbar-thumb {
+    background: #3e3e42;
+    border-radius: 4px;
+}
+
+.codeContent::-webkit-scrollbar-thumb:hover {
+    background: #4e4e52;
 }
 
 .keyword {

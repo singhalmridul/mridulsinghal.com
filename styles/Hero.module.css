@@ -1,13 +1,12 @@
 .hero {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding: 2rem;
-    text-align: center;
+    padding: 2rem 4rem;
 }
 
 .backgroundOverlay {
@@ -17,79 +16,118 @@
     right: 0;
     bottom: 0;
     z-index: -1;
-    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 50%);
+    background: radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.08) 0%, rgba(0, 0, 0, 0) 50%);
+}
+
+/* Demoted 3D background */
+.subtleBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.12;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .content {
     z-index: 10;
-    max-width: 800px;
+    max-width: 600px;
+    text-align: left;
 }
 
 .greeting {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--primary);
     margin-bottom: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
 .name {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .role {
-    font-size: 1.75rem;
-    color: #aaa;
-    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #e2e8f0;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.ampersand {
+    color: #64748b;
     font-weight: 300;
+}
+
+.scope {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.mission {
+    font-size: 1.05rem;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    line-height: 1.6;
+    font-weight: 400;
 }
 
 .socials {
     display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    margin-bottom: 3rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .socialIcon {
-    font-size: 1.5rem;
-    color: #fff;
+    font-size: 1.25rem;
+    color: #94a3b8;
     transition: all 0.3s ease;
     padding: 0.75rem;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(148, 163, 184, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
+    backdrop-filter: blur(10px);
 }
 
 .socialIcon:hover {
-    background: var(--primary);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px var(--primary-glow);
+    background: rgba(14, 165, 233, 0.1);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
 }
 
 .ctaButton {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
+    padding: 1rem 1.75rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #fff;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, #0284c7 100%);
     border: none;
-    border-radius: 50px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-block;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.25);
 }
 
 .ctaButton:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(14, 165, 233, 0.4);
 }
 
 .gridBackground {
@@ -98,28 +136,74 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
-    z-index: -2;
+    background-image:
+        linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.diagramContainer {
+    z-index: 5;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1024px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 6rem 2rem 4rem 2rem;
+        text-align: center;
+    }
+
+    .content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .socials {
+        justify-content: center;
+    }
+
+    .diagramContainer {
+        max-width: 500px;
+        margin: 0 auto;
+    }
 }
 
 @media (max-width: 768px) {
     .hero {
-        padding: 6rem 1rem;
+        padding: 5rem 1.5rem 3rem 1.5rem;
+        gap: 2rem;
     }
 
     .greeting {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .role {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
     }
 
-    .name h1 {
-        /* Assuming h1 is inside the name class */
-        font-size: 2.5rem;
+    .scope {
+        font-size: 0.95rem;
+    }
+
+    .mission {
+        font-size: 0.95rem;
+    }
+
+    .ctaButton {
+        font-size: 0.95rem;
+        padding: 0.9rem 1.5rem;
+    }
+
+    .diagramContainer {
+        max-width: 100%;
     }
 }

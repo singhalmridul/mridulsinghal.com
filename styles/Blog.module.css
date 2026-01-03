@@ -19,10 +19,26 @@
     color: var(--primary);
 }
 
+.subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+}
+
+.cardLink {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .card {

@@ -16,19 +16,35 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://mridulsinghal.com'),
   title: {
-    default: "Mridul Singhal | Full Stack Developer & Cloud Architect",
+    default: "Mridul Singhal | Full-Stack Engineer & Systems Architect",
     template: "%s | Mridul Singhal"
   },
-  description: "Official Portfolio of Mridul Singhal. Full Stack Developer specializing in Next.js, React, and Scalable Cloud Solutions in India.",
+  description: "Mridul Singhal - Full-Stack Engineer & Systems Architect specializing in production systems, observability, infrastructure automation, and full-stack web development. Building scalable web applications and systems that perform at Michelin. Expertise in Next.js, React, Node.js, Splunk, and full-stack development.",
   keywords: [
     "Mridul Singhal",
     "Mridul",
     "Singhal",
-    "Mridul Singhal Portfolio",
-    "Full Stack Developer India",
+    "Full-Stack Engineer",
+    "Full Stack Developer",
+    "Full Stack Development",
+    "Full-Stack Development",
+    "Systems Architect",
+    "System Architecture",
+    "Observability Engineer",
+    "Infrastructure Automation",
+    "Production Systems",
+    "Web Development",
+    "Website Development",
+    "Web Developer",
+    "Splunk Engineer",
+    "Software Engineer India",
+    "Michelin Engineer",
     "Next.js Developer",
-    "React Specialist",
-    "Software Engineer"
+    "React Developer",
+    "Node.js Developer",
+    "TypeScript Developer",
+    "Full Stack Portfolio",
+    "Engineering Portfolio"
   ],
   authors: [{ name: "Mridul Singhal", url: "https://mridulsinghal.com" }],
   creator: "Mridul Singhal",
@@ -36,16 +52,17 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://mridulsinghal.com",
-    title: "Mridul Singhal - Full Stack Developer",
-    description: "Building digital experiences with modern web technologies.",
-    siteName: "Mridul Singhal",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Mridul Singhal" }]
+    title: "Mridul Singhal - Full-Stack Engineer & Systems Architect",
+    description: "Full-stack engineer specializing in production systems, web development, and infrastructure automation. Building scalable systems at Michelin.",
+    siteName: "Mridul Singhal Portfolio",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Mridul Singhal - Full-Stack Engineer & Systems Architect" }]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mridul Singhal | Full Stack Developer",
-    description: "Building digital experiences with modern web technologies.",
-    images: ["/og-image.png"]
+    title: "Mridul Singhal | Full-Stack Engineer & Systems Architect",
+    description: "Full-stack developer building production systems with proven scale and reliability. Web development expertise in Next.js, React, Node.js.",
+    images: ["/og-image.png"],
+    creator: "@singhalmridul"
   },
   robots: {
     index: true,
@@ -75,7 +92,7 @@ export default function RootLayout({
     "givenName": "Mridul",
     "familyName": "Singhal",
     "url": "https://mridulsinghal.com",
-    "jobTitle": "Full Stack Developer",
+    "jobTitle": "Full-Stack Engineer & Systems Architect",
     "worksFor": {
       "@type": "Organization",
       "name": "Michelin India Pvt. Ltd."
@@ -84,7 +101,8 @@ export default function RootLayout({
       "@type": "PostalAddress",
       "addressCountry": "India"
     },
-    "knowsAbout": ["React", "Next.js", "Node.js", "Cloud Computing", "Software Engineering"],
+    "knowsAbout": ["Production Systems", "Observability", "Infrastructure Automation", "Splunk", "Full-Stack Development", "Full Stack Development", "System Architecture", "Web Development", "Website Development", "Next.js", "React", "Node.js", "TypeScript", "MongoDB", "PostgreSQL"],
+    "alternateName": ["Mridul", "Singhal", "Mridul S"],
     "sameAs": [
       "https://github.com/singhalmridul",
       "https://www.linkedin.com/in/mridulsinghal/",

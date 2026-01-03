@@ -15,12 +15,13 @@ export default function About() {
                 >
                     <h2 className={`${styles.heading} h2`}>About Me</h2>
                     <p className={styles.description}>
-                        I am a Full Stack Developer & Application Support Engineer based in New Delhi, India.
-                        I specialize in building robust web applications and optimizing system performance.
+                        I build and own production systems end-to-end—from frontend interfaces through backend services to infrastructure and observability layers.
+                        At Michelin, I architected monitoring platforms processing 50M+ events/day and automated critical operations, reducing MTTR by 60% and saving 30+ engineering hours weekly.
                     </p>
                     <p className={styles.description}>
-                        With experience at Michelin, I've honed my skills in observability (Splunk), database management, and automation.
-                        I'm passionate about solving complex infrastructure problems and creating seamless user experiences.
+                        My approach centers on architectural tradeoffs, performance under scale, and operational reliability.
+                        I've designed distributed observability systems, built self-service automation platforms, and made stack decisions that balance complexity with maintainability.
+                        Every system I build includes instrumentation, graceful degradation, and clear operational runbooks.
                     </p>
                 </motion.div>
 
@@ -35,19 +36,25 @@ export default function About() {
                         <div className={`${styles.circle} ${styles.red}`} />
                         <div className={`${styles.circle} ${styles.yellow}`} />
                         <div className={`${styles.circle} ${styles.green}`} />
-                        <span className={styles.title}>developer.ts</span>
+                        <span className={styles.title}>systems-engineer.ts</span>
                     </div>
                     <div className={styles.codeContent}>
                         <pre>
                             <code>
-                                <span className={styles.keyword}>const</span> <span className={styles.variable}>mridul</span> = {'{\n'}
-                                {'  '}role: <span className={styles.string}>"Application Support Engineer"</span>,{'\n'}
-                                {'  '}location: <span className={styles.string}>"New Delhi, India"</span>,{'\n'}
-                                {'  '}skills: [<span className={styles.string}>"React"</span>, <span className={styles.string}>"Next.js"</span>, <span className={styles.string}>"Splunk"</span>],{'\n'}
-                                {'  '}databases: [<span className={styles.string}>"MongoDB"</span>, <span className={styles.string}>"PostgreSQL"</span>],{'\n'}
-                                {'  '}certifications: [<span className={styles.string}>"ITIL 4"</span>, <span className={styles.string}>"MongoDB Pro"</span>],{'\n'}
-                                {'  '}hobbies: <span className={styles.string}>"Badminton & Tech Exploration"</span>{'\n'}
-                                {'}'};
+                                <span className={styles.keyword}>const</span> <span className={styles.variable}>mridul</span> = {'{'}
+                                {'\n'}                                {'  '}role: <span className={styles.string}>"Full-Stack Engineer & Systems Architect"</span>,
+                                {'\n'}                                {'  '}focus: [<span className={styles.string}>"Production Systems"</span>, <span className={styles.string}>"Observability"</span>, <span className={styles.string}>"Infrastructure"</span>],
+                                {'\n'}                                {'  '}scale: {'{'}
+                                {'\n'}                                {'    '}monitoring: <span className={styles.string}>"50M+ events/day"</span>,
+                                {'\n'}                                {'    '}automation: <span className={styles.string}>"30 hrs/week saved"</span>,
+                                {'\n'}                                {'    '}uptime: <span className={styles.string}>"99.95%"</span>
+                                {'\n'}                                {'  '}{'}'}, {'\n'}                                {'  '}decisions: [<span className={styles.string}>"Architecture"</span>, <span className={styles.string}>"Performance"</span>, <span className={styles.string}>"Reliability"</span>],
+                                {'\n'}                                {'  '}stack: {'{'}
+                                {'\n'}                                {'    '}observability: [<span className={styles.string}>"Splunk"</span>, <span className={styles.string}>"Custom Dashboards"</span>],
+                                {'\n'}                                {'    '}automation: [<span className={styles.string}>"Python"</span>, <span className={styles.string}>"PowerShell"</span>, <span className={styles.string}>"APIs"</span>],
+                                {'\n'}                                {'    '}fullStack: [<span className={styles.string}>"Next.js"</span>, <span className={styles.string}>"TypeScript"</span>, <span className={styles.string}>"MongoDB"</span>]
+                                {'\n'}                                {'  '}{'}'}
+                                {'\n'}                                {'}'};
                             </code>
                         </pre>
                     </div>

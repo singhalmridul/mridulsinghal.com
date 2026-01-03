@@ -1,0 +1,511 @@
+.caseStudy {
+    min-height: 100vh;
+    background-color: var(--background);
+    padding-top: 5rem;
+}
+
+.header {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.backLink:hover {
+    color: var(--primary);
+    gap: 0.75rem;
+}
+
+.titleSection {
+    margin-bottom: 3rem;
+}
+
+.scope {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.scopeTag {
+    font-size: 0.75rem;
+    color: var(--primary);
+    background: rgba(14, 165, 233, 0.1);
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+.title {
+    font-size: 3rem;
+    color: #f1f5f9;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.timeline {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.links {
+    display: flex;
+    gap: 1rem;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 8px;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.link:hover {
+    background: rgba(14, 165, 233, 0.1);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.metricsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.metricCard {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 1.75rem;
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.metricValue {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    margin-bottom: 0.5rem;
+}
+
+.metricLabel {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.section {
+    margin-bottom: 5rem;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    color: #f1f5f9;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid rgba(14, 165, 233, 0.3);
+}
+
+.problemContext {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.subsection h4 {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.subsection p {
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+.overview {
+    color: #cbd5e1;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+}
+
+.architecture {
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.architecture h4 {
+    font-size: 1.25rem;
+    color: #f1f5f9;
+    margin-bottom: 1rem;
+}
+
+.archDescription {
+    color: #94a3b8;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.components {
+    display: grid;
+    gap: 1rem;
+}
+
+.component {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 8px;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.component:hover {
+    border-color: var(--primary);
+    background: rgba(15, 23, 42, 0.7);
+}
+
+.componentName {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.componentResp {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+.techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.techItem {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    background: rgba(100, 116, 139, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-family: 'Fira Code', 'JetBrains Mono', monospace;
+    border: 1px solid rgba(100, 116, 139, 0.3);
+}
+
+.visualEvidence {
+    display: grid;
+    gap: 2rem;
+}
+
+.evidenceItem {
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow: hidden;
+}
+
+.evidenceImage {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.evidenceItem:hover .evidenceImage {
+    transform: scale(1.02);
+}
+
+.evidenceCaption {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+}
+
+.decisions {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.decision {
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.decision h4 {
+    font-size: 1.3rem;
+    color: #f1f5f9;
+    margin-bottom: 1.5rem;
+}
+
+.decisionContent {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.decisionItem strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.decisionItem p {
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+.results {
+    display: grid;
+    gap: 2rem;
+}
+
+.resultCard {
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.resultHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.resultHeader h4 {
+    font-size: 1.2rem;
+    color: #f1f5f9;
+    margin: 0;
+}
+
+.improvement {
+    padding: 0.4rem 1rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 20px;
+    color: #10b981;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.before,
+.after {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 8px;
+}
+
+.iconBefore {
+    color: #ef4444;
+    font-size: 1.25rem;
+}
+
+.iconAfter {
+    color: #10b981;
+    font-size: 1.25rem;
+}
+
+.comparison .label {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.comparison .value {
+    font-size: 1.1rem;
+    color: #f1f5f9;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.learnings {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.learning {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: rgba(30, 41, 59, 0.3);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.learning:hover {
+    border-color: var(--primary);
+    background: rgba(30, 41, 59, 0.5);
+}
+
+.learningNumber {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(14, 165, 233, 0.1);
+    border: 2px solid rgba(14, 165, 233, 0.3);
+    border-radius: 50%;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.learning p {
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.backButton,
+.contactButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.backButton {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    color: #cbd5e1;
+}
+
+.backButton:hover {
+    background: rgba(30, 41, 59, 0.7);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.contactButton {
+    background: linear-gradient(135deg, var(--primary) 0%, #0284c7 100%);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.25);
+}
+
+.contactButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(14, 165, 233, 0.4);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 1.1rem;
+    }
+
+    .metricsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .problemContext {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .backButton,
+    .contactButton {
+        justify-content: center;
+    }
+}
