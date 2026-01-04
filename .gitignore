@@ -42,3 +42,4 @@ next-env.d.ts
 
 *.exp
 portfolio-build.tar.gz
+deploy_bundle.tar.gz

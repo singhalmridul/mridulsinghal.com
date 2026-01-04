@@ -12,6 +12,7 @@ export interface FlagshipProject {
     techStack: string[]
     githubUrl?: string
     liveUrl?: string
+    hasInteractiveArchitecture?: boolean  // Enable interactive architecture workflow
 
     // Case study content
     problem: string
@@ -56,6 +57,7 @@ export const flagshipProjects: FlagshipProject[] = [
         ],
         techStack: ['Next.js', 'TypeScript', 'Express.js', 'MongoDB', 'PostgreSQL', 'Redis', 'AI Agents', 'WebSocket', 'PDF Generation'],
         githubUrl: 'https://github.com/singhalmridul/masai',
+        hasInteractiveArchitecture: true,  // Enable premium animated workflow
 
         problem: 'Traditional vulnerability scanners operate as black-box tools, generating massive false positive rates (30-40%) and missing complex business logic vulnerabilities. Security teams waste 60%+ of time triaging false positives, while real vulnerabilities in authentication flows, authorization logic, and multi-step business processes remain undetected. Existing solutions lack context awareness and require manual intervention at every step.',
 

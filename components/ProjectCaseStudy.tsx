@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { FlagshipProject } from '../data/projects'
 import styles from '../styles/ProjectCaseStudy.module.css'
+import MASAIArchitecture from './MASAIArchitecture'
 
 interface Props {
     project: FlagshipProject
@@ -101,6 +102,13 @@ export default function ProjectCaseStudy({ project }: Props) {
                         </div>
                     </div>
                 </Section>
+
+                {/* Interactive Architecture (for MAS-AI) */}
+                {project.hasInteractiveArchitecture && (
+                    <Section title="Interactive Architecture Workflow" delay={0.42}>
+                        <MASAIArchitecture />
+                    </Section>
+                )}
 
                 {/* Visual Evidence */}
                 {project.visualEvidence && project.visualEvidence.length > 0 && (
