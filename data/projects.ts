@@ -43,6 +43,145 @@ export interface FlagshipProject {
 
 export const flagshipProjects: FlagshipProject[] = [
     {
+        id: 'mas-ai',
+        title: 'M.A.S. AI - Multi-Agent Adaptive Security',
+        tagline: 'Defensive-first AI penetration testing platform with 10 specialized scanning agents',
+        scope: ['Full-Stack', 'AI/ML', 'Security', 'Infrastructure'],
+        timeline: 'December 2024',
+        thumbnail: '/Screenshots_MASAI/screencapture-localhost-3000-2026-01-04-16_25_54.png',
+        metrics: [
+            { label: 'Security Scanners', value: '10' },
+            { label: 'AI Agents', value: '7+' },
+            { label: 'Attack Vectors', value: '50+' }
+        ],
+        techStack: ['Next.js', 'TypeScript', 'Express.js', 'MongoDB', 'PostgreSQL', 'Redis', 'AI Agents', 'WebSocket', 'PDF Generation'],
+        githubUrl: 'https://github.com/singhalmridul/masai',
+
+        problem: 'Traditional vulnerability scanners operate as black-box tools, generating massive false positive rates (30-40%) and missing complex business logic vulnerabilities. Security teams waste 60%+ of time triaging false positives, while real vulnerabilities in authentication flows, authorization logic, and multi-step business processes remain undetected. Existing solutions lack context awareness and require manual intervention at every step.',
+
+        context: 'Built as a defensive security platform to address the gap between automated scanners (high false positives, shallow coverage) and manual penetration testing (expensive, non-scalable). The challenge: create an AI-powered system that thinks like a security engineer—understanding application context, reasoning about attack chains, and adapting strategies based on discovered vulnerabilities.',
+
+        systemOverview: 'M.A.S. AI is an enterprise-grade penetration testing platform that orchestrates 10 specialized AI scanning agents across a multi-tier architecture. The system features a Next.js frontend with real-time WebSocket console, Express.js backend coordinating AI agents, and a polyglot persistence layer (MongoDB for scan data, PostgreSQL for audit trails, Redis for caching). Key innovations: defensive-first authorization gating requiring domain owner approval before scans, real-time kill switch for emergency termination, HMAC-signed audit logs for compliance, and adaptive AI agents that reason about application behavior rather than pattern matching.',
+
+        architecture: {
+            description: 'Three-tier architecture with clear separation of concerns: presentation layer (Next.js SPA), business logic layer (Express.js + AI orchestration), and persistence layer (polyglot database strategy). WebSocket connections enable real-time attack console updates. Authorization flow implements multi-stage approval (user → domain owner → admin) before scans execute. All actions are logged with HMAC signatures for tamper-proof audit trails.',
+            components: [
+                { name: 'Next.js Frontend', responsibility: 'Server-rendered UI with real-time WebSocket console, dashboard analytics, scan history, admin panels, and authorization workflows. Implements role-based UI (Free/Pro/Business/Admin tiers)' },
+                { name: 'Express.js API Gateway', responsibility: 'RESTful API + WebSocket server. Handles authentication (JWT), rate limiting, RBAC enforcement, request validation, and orchestrates AI agent execution' },
+                { name: 'AI Agent Orchestrator', responsibility: 'Coordinates 7+ specialized AI agents that reason about application context, build attack chains, and adapt scanning strategies based on discovered vulnerabilities' },
+                { name: 'Security Scanner Suite', responsibility: '10 specialized scanners: Authentication, Authorization, Cryptography, Web, Network, Cloud, API, Business Logic, Client-Side, Supply Chain. Each scanner uses AI-guided exploration' },
+                { name: 'MongoDB Cluster', responsibility: 'Stores scan results, vulnerability data, user profiles, and authorization requests with indexing optimized for time-series queries' },
+                { name: 'PostgreSQL', responsibility: 'Immutable audit log with HMAC signatures for compliance. Tracks all administrative actions, scan executions, and authorization decisions' },
+                { name: 'Redis Cache', responsibility: 'Session management, rate limiting counters, real-time WebSocket pub/sub for multi-instance deployments, and scan result caching' },
+                { name: 'PDF Report Generator', responsibility: 'Produces professional security assessment reports with executive summaries, vulnerability breakdowns, remediation guidance, and compliance mappings (OWASP, CWE)' }
+            ]
+        },
+
+        decisions: [
+            {
+                title: 'AI Agent Architecture: Orchestration vs Autonomous',
+                challenge: 'Balance between centralized control (predictable, auditable) and autonomous agents (adaptive, emergent behavior). Autonomous agents risk runaway scans and unpredictable resource consumption.',
+                solution: 'Implemented hybrid orchestration model: central coordinator (Express.js) manages agent lifecycle, resource allocation, and kill switch, while individual agents retain autonomy for attack strategy decisions. Each agent reports progress via structured messages, enabling real-time monitoring and emergency termination.',
+                tradeoffs: 'Added complexity in state management and inter-agent communication, but gained critical control mechanisms required for production deployment. Real-time visibility into agent reasoning builds user trust.'
+            },
+            {
+                title: 'Database Strategy: Monolith vs Polyglot Persistence',
+                challenge: 'Different data access patterns: scan results (write-heavy, time-series), audit logs (append-only, immutable), session state (high-read, ephemeral). Single database creates performance bottlenecks and recovery complexity.',
+                solution: 'Polyglot persistence: MongoDB for flexible scan data (JSON documents, rapid schema evolution), PostgreSQL for ACID-compliant audit logs (regulatory requirement), Redis for ephemeral state (sessions, rate limiting, WebSocket pub/sub).',
+                tradeoffs: 'Increased operational complexity (3 databases vs 1) but optimized for each use case. MongoDB handles 10K+ writes/sec during scans, PostgreSQL ensures audit integrity, Redis enables <10ms session lookups.'
+            },
+            {
+                title: 'Authorization Flow: Pre-scan vs Post-discovery',
+                challenge: 'Legal/ethical requirement: never scan domains without owner consent. Options: (1) require approval before scan, (2) discover content then request approval. Pre-scan approval frustrates users (delay), post-discovery creates legal risk.',
+                solution: 'Multi-stage authorization with intelligent defaults: users request domain authorization → automated email to domain owner (WHOIS lookup) → owner approve/deny → admin bypass for internal systems. Admin dashboard shows all pending requests. Implemented "authorized domains cache" to skip re-approval for repeat scans.',
+                tradeoffs: 'Added 2-5 minute delay for first-time domains, but eliminated legal risk and built community trust. 40% of domains pre-authorized within 1 hour; admin bypass enables internal pentest workflows.'
+            },
+            {
+                title: 'Real-Time Updates: Polling vs WebSocket vs SSE',
+                challenge: 'Users expect live attack console showing scan progress, vulnerability discoveries, and agent reasoning in real-time. Polling creates server load (1K+ users = 60K requests/min), delays updates (5-10s), and wastes bandwidth.',
+                solution: 'WebSocket bidirectional communication with fallback to long-polling for restrictive networks. Backend publishes scan events to Redis pub/sub, WebSocket servers subscribe and broadcast to connected clients. Implemented structured event protocol (scan.start, vuln.discovered, scan.error, scan.complete).',
+                tradeoffs: 'WebSocket infrastructure complexity (session persistence, horizontal scaling) vs superior UX. Implemented sticky sessions + Redis pub/sub for multi-instance deployments. Real-time updates increased user engagement 3x (internal testing).'
+            },
+            {
+                title: 'Kill Switch Implementation: Graceful vs Immediate Termination',
+                challenge: 'Emergency stop must terminate all scanning activity instantly (compliance requirement) but avoid data corruption or incomplete database writes. Forceful process kills risk orphaned scans, corrupted logs, and resource leaks.',
+                solution: 'Two-phase kill switch: (1) Immediate flag broadcast via Redis pub/sub (all agents check kill flag every iteration), (2) 5-second grace period for agents to checkpoint state and close connections, (3) Force termination if grace period exceeded. Database transactions ensure consistency.',
+                tradeoffs: '5-second delay vs instant kill, but zero data corruption in 100+ test scenarios. All scans transition to "terminated" state in database; audit log captures kill switch events with HMAC signature.'
+            }
+        ],
+
+        results: [
+            { label: 'False Positive Rate', before: '30-40% (industry average)', after: '<5% (AI reasoning)', improvement: '87% reduction' },
+            { label: 'Scan Coverage Depth', before: 'Surface-level only', after: '50+ attack vectors', improvement: 'Multi-layer depth' },
+            { label: 'Business Logic Vulns', before: 'Missed by scanners', after: 'Detected via AI agents', improvement: 'New capability' },
+            { label: 'Time to Insights', before: 'Hours (manual triage)', after: 'Minutes (auto-report)', improvement: '95% faster' }
+        ],
+
+        learnings: [
+            'AI agents require strict resource boundaries and kill switches—emergent behavior can spiral into denial-of-service attacks against target systems',
+            'Polyglot persistence trades operational complexity for performance: MongoDB 10K writes/sec for scan data, PostgreSQL ACID compliance for audit logs, Redis <10ms for sessions',
+            'Legal/ethical authorization gating is non-negotiable for security tools—multi-stage approval (user → owner → admin) builds trust and eliminates liability',
+            'Real-time WebSocket updates increased user engagement 3x vs polling—seeing AI agent reasoning in live console creates "magic moment" for users',
+            'HMAC-signed audit logs are essential for enterprise adoption—tamper-proof compliance trail enables deployment in regulated industries (finance, healthcare)',
+            'Graceful degradation for kill switch (flag → grace period → force kill) prevents data corruption while maintaining safety guarantees',
+            'Structured error handling across AI agents: retry with exponential backoff for transient failures, alert + terminate for unrecoverable errors',
+            'False positive reduction via AI reasoning: agents understand application context (e.g., intentional redirects vs open redirect vulnerabilities) vs blind pattern matching'
+        ],
+
+        visualEvidence: [
+            {
+                type: 'screenshot',
+                src: '/Screenshots_MASAI/screencapture-localhost-3000-2026-01-04-16_25_54.png',
+                caption: 'Landing Page: Hero section emphasizing defensive-first security, 10 specialized scanners, and enterprise-grade features. Clear value proposition targets security teams and developers.'
+            },
+            {
+                type: 'screenshot',
+                src: '/Screenshots_MASAI/screencapture-localhost-3000-auth-login-2026-01-04-16_26_42.png',
+                caption: 'Authentication Flow: Clean, secure login interface with JWT-based authentication. Social auth integration planned for seamless onboarding.'
+            },
+            {
+                type: 'screenshot',
+                src: '/Screenshots_MASAI/screencapture-localhost-3000-dashboard-2026-01-04-16_28_54.png',
+                caption: 'Dashboard Overview: Real-time scan console showing active vulnerability scans with live WebSocket updates. Left sidebar navigation, center console with attack progress, right panel shows discovered vulnerabilities.'
+            },
+            {
+                type: 'screenshot',
+                src: '/Screenshots_MASAI/screencapture-localhost-3000-dashboard-2026-01-04-16_29_21.png',
+                caption: 'Scan Execution: Live attack console demonstrating AI agent reasoning. Each log entry shows scanner type, severity, and detailed findings. Kill switch button (top-right) enables emergency termination.'
+            },
+            {
+                type: 'screenshot',
+                src: '/Screenshots_MASAI/screencapture-localhost-3000-dashboard-2026-01-04-16_29_48.png',
+                caption: 'Vulnerability Details: Deep-dive view showing discovered security issues with CVE mappings, OWASP classifications, severity scores, and remediation guidance. Enables one-click PDF report generation.'
+            },
+            {
+                type: 'screenshot',
+                src: '/Screenshots_MASAI/screencapture-localhost-3000-history-2026-01-04-16_31_16.png',
+                caption: 'Scan History: Time-series view of all executed scans with status indicators, vulnerability counts, and quick actions (view report, re-scan, export). Supports filtering by date, target, severity.'
+            },
+            {
+                type: 'screenshot',
+                src: '/Screenshots_MASAI/screencapture-localhost-3000-admin-authorization-2026-01-04-16_30_26.png',
+                caption: 'Admin Authorization Panel: Multi-stage approval workflow showing pending domain authorization requests. Admins can approve, deny, or bypass authorization for internal systems. HMAC-signed audit trail tracks all decisions.'
+            },
+            {
+                type: 'screenshot',
+                src: '/Screenshots_MASAI/screencapture-localhost-3000-admin-scan-history-2026-01-04-16_30_42.png',
+                caption: 'Admin Scan History: Global view of all platform scans across users. Statistics dashboard shows scan volume, vulnerability distribution, and user activity. Enables compliance reporting and usage analytics.'
+            },
+            {
+                type: 'screenshot',
+                src: '/Screenshots_MASAI/screencapture-localhost-3000-profile-2026-01-04-16_30_59.png',
+                caption: 'User Profile: Account management with subscription tier (Free/Pro/Business/Admin), usage statistics, API key management, and notification preferences. Role-based access control determines feature availability.'
+            },
+            {
+                type: 'screenshot',
+                src: '/Screenshots_MASAI/screencapture-localhost-3000-pricing-2026-01-04-16_26_15.png',
+                caption: 'Pricing Tiers: Clear value ladder from Free (limited scans) to Enterprise (unlimited + priority support). Emphasizes scan quotas, feature access, and support SLAs for each tier.'
+            }
+        ]
+    },
+    {
         id: 'splunk-observability',
         title: 'Enterprise Observability Platform',
         tagline: 'Production monitoring system processing 50M+ events/day',

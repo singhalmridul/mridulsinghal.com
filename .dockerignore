@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.gitignore
+*.md
+.env*.local
+.vercel
+*.log
+portfolio-build.tar.gz
+backup_mridulsinghal.com
+temp_deploy

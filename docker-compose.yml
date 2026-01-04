@@ -1,0 +1,21 @@
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mridulsinghal-portfolio
+    restart: unless-stopped
+    expose:
+      - "3000"
+    networks:
+      - proxy-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mridul.rule=Host(`mridulsinghal.com`) || Host(`www.mridulsinghal.com`)"
+      - "traefik.http.routers.mridul.entrypoints=websecure"
+      - "traefik.http.routers.mridul.tls.certresolver=myresolver"
+      - "traefik.http.services.mridul.loadbalancer.server.port=3000"
+
+networks:
+  proxy-net:
+    external: true

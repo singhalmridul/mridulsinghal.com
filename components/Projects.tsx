@@ -15,7 +15,7 @@ export default function Projects() {
                 viewport={{ once: true }}
                 className={styles.headerContainer}
             >
-                <h2 className={styles.title}>Engineering <span>Case Studies</span></h2>
+                <h2 className={styles.title}>Flagship <span>Case Studies</span></h2>
                 <p className={styles.subtitle}>
                     Production systems built, deployed, and maintained. Emphasis on architecture decisions, tradeoffs, and measurable impact.
                 </p>
