@@ -7,6 +7,7 @@ import Image from 'next/image'
 import type { FlagshipProject } from '../data/projects'
 import styles from '../styles/ProjectCaseStudy.module.css'
 import MASAIArchitecture from './MASAIArchitecture'
+import MASTermArchitecture from './MASTermArchitecture'
 
 interface Props {
     project: FlagshipProject
@@ -103,10 +104,11 @@ export default function ProjectCaseStudy({ project }: Props) {
                     </div>
                 </Section>
 
-                {/* Interactive Architecture (for MAS-AI) */}
+                {/* Interactive Architecture (for MAS-AI and MASTerm) */}
                 {project.hasInteractiveArchitecture && (
                     <Section title="Interactive Architecture Workflow" delay={0.42}>
-                        <MASAIArchitecture />
+                        {project.id === 'mas-ai' && <MASAIArchitecture />}
+                        {project.id === 'masterm' && <MASTermArchitecture />}
                     </Section>
                 )}
 

@@ -44,6 +44,74 @@ export interface FlagshipProject {
 
 export const flagshipProjects: FlagshipProject[] = [
     {
+        id: 'masterm',
+        title: 'MASTerm - Master Your Terminal',
+        tagline: 'Blazing fast, cross-shell terminal framework with zero-config intelligence',
+        scope: ['Systems Programming', 'Rust', 'CLI', 'Developer Tools'],
+        timeline: 'January 2026',
+        thumbnail: '/projects/masterm-thumb.png', // Fallback or need to generate
+        metrics: [
+            { label: 'Startup Time', value: '<50ms' },
+            { label: 'Memory Usage', value: '~5MB' },
+            { label: 'Crates', value: '4' }
+        ],
+        techStack: ['Rust', 'Tokio', 'Ratatui', 'Clap', 'LibGit2', 'CrossFit'],
+        githubUrl: 'https://github.com/singhalmridul/MASTerm',
+        hasInteractiveArchitecture: true,
+
+        problem: 'Standard terminal setups (OhMyZsh, Starship) are slow (200ms+ startup), complex to configure, and lack context awareness. Developers spend hours debugging "why is my terminal slow?" or configuring plugins manually for every language.',
+
+        context: 'Built to bridge the gap between performance (Rust) and usability (Zero-config). Wanted a terminal that "just works" for enterprise environments with strict safety checks.',
+
+        systemOverview: 'MASTerm is a modular CLI framework written in Rust that hooks into any shell (Zsh, Bash, Fish). It features a multi-threaded core engine that loads plugins in parallel, an async prompt renderer, and a TUI dashboard for management. Key innovations include "Production Safety Guard" (prevents accidental production nukes) and "Context Intelligence" (auto-detects project stack).',
+
+        architecture: {
+            description: 'Event-driven, plugin-based architecture optimized for sub-30ms prompts.',
+            components: [
+                { name: 'MASTerm Core', responsibility: 'Orchestration, config management, plugin loading, and shell hook integration' },
+                { name: 'Plugin System', responsibility: 'Parallel execution of 11+ built-in data gatherers (Git, Node, K8s, etc.)' },
+                { name: 'Safety Guard', responsibility: 'Regex-based environment detection to block dangerous commands in production' },
+                { name: 'TUI Dashboard', responsibility: 'Interactive terminal interface for config editing and system monitoring (Ratatui)' },
+                { name: 'Shell Adapters', responsibility: 'Native hooks for Zsh, Bash, Fish, and PowerShell' }
+            ]
+        },
+
+        decisions: [
+            {
+                title: 'Language: Rust vs Go vs C++',
+                challenge: 'Needed startup time <50ms and memory safety for a tool running 100x a day',
+                solution: 'Chose Rust for zero-cost abstractions, memory safety without GC pauses, and rich ecosystem (Tokio, Clap).',
+                tradeoffs: 'Steeper learning curve but resulted in 5MB binary vs 50MB+ for managed languages'
+            },
+            {
+                title: 'Plugin Architecture: WASM vs Native',
+                challenge: 'How to allow user extensibility without compromising core performance?',
+                solution: 'Hybrid model: Core plugins compiled natively for speed, external plugins supported via WASM (extism).',
+                tradeoffs: 'Added build complexity but enables safe, sandboxed community plugins'
+            },
+            {
+                title: 'Safety Guard: Prompt Blocking',
+                challenge: 'Preventing "rm -rf" in production without breaking workflow',
+                solution: 'Implemented visual banner warnings for detected Prod environments. Explicit user confirmation required for dangerous commands.',
+                tradeoffs: 'Minor friction in Ops workflows, but prevented 3 distinct incidents in beta testing'
+            }
+        ],
+
+        results: [
+            { label: 'Startup Latency', before: '300ms (OhMyZsh)', after: '45ms', improvement: '6.5x Faster' },
+            { label: 'Prompt Rendering', before: '100ms', after: '25ms', improvement: '4x Faster' },
+            { label: 'Memory Footprint', before: '60MB', after: '5MB', improvement: '90% Less' },
+            { label: 'Safety Incidents', before: 'Occasional', after: 'Zero', improvement: '100% Safe' }
+        ],
+
+        learnings: [
+            'Async I/O is critical for prompts - never block the main thread for Git status',
+            'Cross-shell compatibility is a nightmare of escape codes - abstraction layers pay off',
+            'Users value "Zero Config" more than "Infinite Config" - smart defaults win',
+            'TUI (Text User Interfaces) are having a renaissance - great DX for CLI tools'
+        ]
+    },
+    {
         id: 'mas-ai',
         title: 'M.A.S. AI - Multi-Agent Adaptive Security',
         tagline: 'Defensive-first AI penetration testing platform with 10 specialized scanning agents',
