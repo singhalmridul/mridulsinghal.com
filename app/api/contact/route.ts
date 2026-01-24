@@ -10,14 +10,22 @@ export async function POST(req: Request) {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'mridulsinghal11@gmail.com',
-                pass: 'peuw sdid qeuw jlpq' // App Password provided by user
-            }
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            },
+            debug: true, // Show debug output
+            logger: true // Log information to console
         });
+
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            console.error('Missing email credentials');
+            return NextResponse.json({ success: false, message: 'Server configuration error' }, { status: 500 });
+        }
+
 
         // 2. Admin Email Template (To You)
         const adminMailOptions = {
-            from: 'Portfolio Bot <mridulsinghal11@gmail.com>',
+            from: `Portfolio Bot <${process.env.EMAIL_USER}>`,
             to: 'mridulsinghal11@gmail.com',
             subject: `✨ New Inquiry: ${name}`,
             html: `
@@ -115,7 +123,7 @@ export async function POST(req: Request) {
 
         // 3. User Confirmation Template (To Them)
         const userMailOptions = {
-            from: 'Mridul Singhal <mridulsinghal11@gmail.com>',
+            from: `Mridul Singhal <${process.env.EMAIL_USER}>`,
             to: email,
             subject: `Message Received! 🚀`,
             html: `
